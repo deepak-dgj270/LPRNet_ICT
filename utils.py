@@ -56,12 +56,14 @@ class DataIterator:
         self.filenames = []
         self.labels = []
         fs = os.listdir(self.img_dir)
+        print(fs)
         for filename in fs:
-            self.filenames.append(filename)
-            label = filename.split('_')[0] # format: [label]_[random number].jpg
-            # print(label)
-            label = encode_label(label, CHARS_DICT)
-            self.labels.append(label)
+            if filename != '.ipynb_checkpoints':
+              self.filenames.append(filename)
+              label = filename.split('_')[0] # format: [label]_[random number].jpg
+              print(label)
+              label = encode_label(label, CHARS_DICT)
+              self.labels.append(label)
         self.sample_num = len(self.labels)
         self.labels = np.array(self.labels)
         self.random_index = list(range(self.sample_num))
