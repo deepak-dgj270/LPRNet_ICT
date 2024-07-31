@@ -137,7 +137,7 @@ def parser_args():
 
     parser.add_argument("--train_dir", default="/content/LPRNet_ICT/train", help="path to the train directory")
     parser.add_argument("--val_dir", default="/content/LPRNet_ICT/valid", help="path to the validation directory")
-    parser.add_argument("--train_epochs", type=int, default=10, help="number of training epochs")
+    parser.add_argument("--train_epochs", type=int, default=1000, help="number of training epochs")
     parser.add_argument("--batch_size", type=int, default=8, help="batch size (train)")
     parser.add_argument("--val_batch_size", type=int, default=4, help="validation batch size")
     parser.add_argument("--lr", type=float, default=1e-3, help="initial learning rate")
