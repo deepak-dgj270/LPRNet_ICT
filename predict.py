@@ -19,11 +19,11 @@ def run():
 	cnt = 0
 
 	#loop through all the files in the test folder
-	for filename in os.listdir("/content/LPRNET/images/samples"): 
+	for filename in os.listdir("/content/LPRNet_ICT/images/samples"): 
 		#check if the file is an image
 		if filename.endswith(".jpg") or filename.endswith(".JPG"): 
 			#read the file and preprocess it 
-			frame = cv2.imread(f"/content/LPRNET/images/samples/{filename}")
+			frame = cv2.imread(f"/content/LPRNet_ICT/images/samples/{filename}")
 			img = cv2.resize(frame, (94,24))
 			img = np.expand_dims(img,axis = 0)
 			#get the output sequence
