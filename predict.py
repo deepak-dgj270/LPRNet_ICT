@@ -12,7 +12,7 @@ from tensorflow.keras.models import load_model
 
 def run():
 	#load the KERAS model
-	model = load_model("./saved_models/new_out_model_last.pb")
+	model = load_model("/content/LPRNet_ICT/saved_models/new_out_model_last.keras")
 	print("Loaded Weights successfully")
 	print("Actual Label \t Predicted Label ")
 	start_time = time()
