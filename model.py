@@ -24,8 +24,8 @@ class LPRNet:
     def _build(self):
         inputs = Input(self.input_shape)
         x = self.input_block()(inputs)
-        x = self.basic_block(x.get_shape().as_list()[3], 256)(x)
-        x = self.convolution_block(x.get_shape().as_list()[3], 256, 2)(x)
+        x = self.basic_block(x.shape[-1], 256)(x)  # Replaced get_shape().as_list() with shape
+        x = self.convolution_block(x.shape[-1], 256, 2)(x) 
 
         x = Dropout(self.dropout)(x)
         x = conv2D_batchnorm(256, [4, 1])(x)
@@ -108,6 +108,6 @@ def conv2D_batchnorm(*args, **kwargs):
 if __name__ == '__main__':
     model = LPRNet(37)
     # model.load_weights("saved_models/model_best.pb")
-    model = load_model("saved_models/model_best.pb")
-    model.save("./saved_models/test-save.hdf5")
+    model = load_model("saved_models/model_best.keras")
+    model.save("./saved_models/test-save.keras")
     # model.summary()
