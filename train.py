@@ -120,13 +120,13 @@ def train():
             # If the validation loss is less than the previous best validation loss, update the saved model
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
-                net.save_weights(os.path.join(args["saved_dir"], "new_out_model_best.pb"))
-                print("Weights updated in {}/{}".format(args["saved_dir"], "new_out_model_best.pb"))
+                net.save_weights(os.path.join(args["saved_dir"], "new_out_model_best.keras"))
+                print("Weights updated in {}/{}".format(args["saved_dir"], "new_out_model_best.keras"))
             else:
                 print("Validation loss is greater than best_val_loss")
 
-    net.save(os.path.join(args["saved_dir"], "new_out_model_last.pb"))
-    print("Final Weights saved in {}/{}".format(args["saved_dir"], "new_out_model_last.pb"))
+    net.save(os.path.join(args["saved_dir"], "new_out_model_last.keras"))
+    print("Final Weights saved in {}/{}".format(args["saved_dir"], "new_out_model_last.keras"))
     tensorboard.on_train_end(None)
 
 def parser_args():
@@ -145,7 +145,7 @@ def parser_args():
     parser.add_argument("--decay_rate", type=float, default=0.995, help="learning rate decay rate")
     parser.add_argument("--staircase", action="store_true", help="learning rate decay on step (default: smooth)")
     parser.add_argument("--pretrained", help="pretrained model location")
-    parser.add_argument("--saved_dir", default="saved_models", help="folder for saving models")
+    parser.add_argument("--saved_dir", default="/content/LPRNet_ICT/saved_models", help="folder for saving models")
 
     args = vars(parser.parse_args())
     return args
