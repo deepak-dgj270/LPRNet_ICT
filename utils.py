@@ -1,4 +1,5 @@
 import numpy as np
+import tensorflow as tf
 import cv2
 import os
 import random
@@ -65,10 +66,17 @@ class DataIterator:
               label = encode_label(label, CHARS_DICT)
               self.labels.append(label)
         self.sample_num = len(self.labels)
-        self.labels = np.array(self.labels)
+        #self.labels = np.array(self.labels)
+        self.labels = self.pad_labels(self.labels)
         self.random_index = list(range(self.sample_num))
         random.shuffle(self.random_index)
         self.cur_index = 0
+
+    def pad_labels(self, labels):
+        if not labels:
+            return np.array([])
+        max_length = max(len(label) for label in labels)
+        return tf.keras.preprocessing.sequence.pad_sequences(labels, maxlen=max_length, padding='post', value=-1)
 
     def next_sample_ind(self):
         ret = self.random_index[self.cur_index]
