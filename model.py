@@ -108,6 +108,6 @@ def conv2D_batchnorm(*args, **kwargs):
 if __name__ == '__main__':
     model = LPRNet(37)
     # model.load_weights("saved_models/model_best.pb")
-    model = load_model("saved_models/model_best.keras")
-    model.save("./saved_models/test-save.keras")
+    model = load_model("saved_models/model_best.weights.h5")
+    model.save("./saved_models/test-save.weights.h5")
     # model.summary()
