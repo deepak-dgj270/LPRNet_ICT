@@ -120,13 +120,13 @@ def train():
             # If the validation loss is less than the previous best validation loss, update the saved model
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
-                net.save_weights(os.path.join(args["saved_dir"], "new_out_model_best.keras"))
-                print("Weights updated in {}/{}".format(args["saved_dir"], "new_out_model_best.keras"))
+                net.save_weights(os.path.join(args["saved_dir"], "new_out_model_best.weights.h5"))
+                print("Weights updated in {}/{}".format(args["saved_dir"], "new_out_model_best.weights.h5"))
             else:
                 print("Validation loss is greater than best_val_loss")
 
-    net.save(os.path.join(args["saved_dir"], "new_out_model_last.keras"))
-    print("Final Weights saved in {}/{}".format(args["saved_dir"], "new_out_model_last.keras"))
+    net.save(os.path.join(args["saved_dir"], "new_out_model_last.weights.h5"))
+    print("Final Weights saved in {}/{}".format(args["saved_dir"], "new_out_model_last.weights.h5"))
     tensorboard.on_train_end(None)
 
 def parser_args():
